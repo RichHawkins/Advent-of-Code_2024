@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.HashMap;
 
 
 public class Main{
@@ -41,13 +42,14 @@ public class Main{
             } 
             scanner.close();
 
-            calculateDifferenceInValues(leftValues, rightValues);
+            calculateDifferenceOfElements(leftValues, rightValues);
+            calculateSimilarityScore(leftValues, rightValues);
         } catch (FileNotFoundException e){
             System.err.println("There was an error while reading the file: " + e.getMessage());
         }
     }
 
-    public static void calculateDifferenceInValues(int[] arr1, int[] arr2){
+    public static void calculateDifferenceOfElements(int[] arr1, int[] arr2){
 
         Arrays.sort(arr1);
         Arrays.sort(arr2);
@@ -59,6 +61,24 @@ public class Main{
 
         System.out.println("The total difference is: " + difference);
        
+    }
+
+    public static void calculateSimilarityScore(int[] left, int[] right){
+        HashMap<Integer, Integer> freqMap = new HashMap<>();
+        int similarityScore = 0;
+        //populate map from right array
+        for(int num : right){
+            if(freqMap.containsKey(num)){
+                freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+            }else{
+                freqMap.put(num, 1);
+            } 
+        }
+        for(int num : left){
+            similarityScore += freqMap.getOrDefault(num, 0) * num;
+        }
+
+        System.out.println("The total similarity score is: " + similarityScore );
     }
 
 }
