@@ -35,10 +35,6 @@ public class DayTwo{
             if(diff < 1 || diff > 3){
                 return false;
             } 
-            
-            if(diff < 0){
-                return false;
-            }
         }
         return true;
     }
@@ -51,11 +47,6 @@ public class DayTwo{
             if(diff < 1 || diff > 3){
                 return false;
             } 
-            
-            if(diff < 0){
-               return false;
-            }
-
         }
         return true;
     }
