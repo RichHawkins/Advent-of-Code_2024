@@ -78,7 +78,7 @@ public class Main{
             similarityScore += freqMap.getOrDefault(num, 0) * num;
         }
 
-        System.out.println("The total similarity score is: " + similarityScore );
+        System.out.println("The total similarity score is: " + similarityScore);
     }
 
 }
